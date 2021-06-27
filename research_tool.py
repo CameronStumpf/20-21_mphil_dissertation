@@ -1,7 +1,6 @@
 
 from numpy.core.numeric import False_
 import streamlit as st
-import SessionState
 # To make things easier later, we're also importing numpy and pandas for
 # working with sample data.
 
@@ -199,7 +198,7 @@ st.image(image, caption = 'pharma_example', use_column_width=True)
 #######################################
 
 #load & clean data
-df_demand = pd.read_csv("./data/demand_data.csv")
+df_demand = pd.read_csv("demand_data.csv")
 df_demand = df_demand.interpolate(method='linear') #interpolate missing data
 df_demand[["Drug M, Market C", "Drug M, Market B", "Drug H, Market A"]] = df_demand[["Drug M, Market C", "Drug M, Market B", "Drug H, Market A"]].divide(1000000)
 
