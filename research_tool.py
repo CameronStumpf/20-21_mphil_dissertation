@@ -9,7 +9,6 @@ import matplotlib.pyplot as plt
 import scipy.stats as stats
 
 from PIL import Image
-import time
 
 
  
@@ -178,10 +177,22 @@ class Stage:
 ###      Introduction Section       ###
 #######################################
 
+st.title("A Visual Interactive Tool to Support the Allocation of Safety Stock in Supply Networks")
+
+st.markdown("This web application allows a user to interactively engage with selected elements of a widely used safety stock algorithm.  In allowing a user to experiment and play with the underlying assumptions of the algorithm it is expected that their own subjectivity can be leveraged to make better decisions.")
+st.markdown("The tool uses anonymised supply chain data for 2 drugs win a common API across three geographically distinct markets - also anonymised.  A diagram of the supply network is shown in Figure 1.")
+st.markdown("This tool was developed as a component of a Master's level research project at the University of Cambridge's Institute for Manufacturing (2021).")
+
 #st.set_page_config(layout="wide")
 #Import Image
 image = Image.open('pharma_example.png')
-st.image(image, caption = 'pharma_example', use_column_width=True)
+st.image(image, caption = 'Figure 1: Diagram of pharmaceutical supply network example', use_column_width=True)
+
+st.header("How to use this tool")
+st.markdown("This tool consists of two section:")
+st.markdown("1. Demand Variability\n2. Safety Stock Positioning")
+st.markdown("The Demand Variability section provides the weekly demand of each drug in each market for the previous 52 weeks.  The sliders may be used to set how they forecast the demand variability to change - the default values of the sliders represent the average demand and standard deviation of the previous year's data.")
+st.markdown("The final section allows the user to select which stages to store safety stock on.  The 'Calculate Inventory' button will then calculate the necessary service times, inventory levels, and inventory value.")
 
 
 '''
@@ -194,6 +205,11 @@ st.image(image, caption = 'pharma_example', use_column_width=True)
 #######################################
 ###       demand variability        ###
 #######################################
+
+st.title("Section 1: Demand Variability")
+st.text("")
+st.text("")
+
 
 #load & clean data
 df_demand = pd.read_csv("demand_data.csv")
@@ -374,6 +390,8 @@ chartCols[0].pyplot(fig_J)
 ###    Inventory Storage & Value Calculation     ###
 ####################################################
 
+st.title("Section 2: Inventory Allocation")
+st.markdown("Check the boxes adjacent from the stages nominated to hold inventory.  Press 'Calculate Inventory' to show the corresponding inventory quantities and values.")
 
 col_secondLast, = st.beta_columns(1)
 image = Image.open('pharma_example.png')
@@ -503,7 +521,6 @@ if cols_last2[0].button("Calculate Inventory"):
         "Sigma",
         "Z",
         "S_out",
-        "S_in",
         "Unit Value",
         "Inv.",
         "Inv. Value"
@@ -517,9 +534,8 @@ if cols_last2[0].button("Calculate Inventory"):
             "Sigma" : "%.3f" % stageList[i].sigma,
             "Z" : "%.3f" % stageList[i].z,
             "S_out" : "%.0f" % stageList[i].s_out,
-            "S_in" : "%.0f" % stageList[i].s_in,
             "Unit Value" : "£%.0f" % stageList[i].cumulativeCost,
-            "Inv." : "%.3fM" % stageList[i].E,
+            "Inv." : "%.2fM" % stageList[i].E,
             "Inv. Value" : "£%.2fM" % stageList[i].Eh
         }
         df = df.append(row, ignore_index=True)
