@@ -179,9 +179,8 @@ class Stage:
 
 st.title("A Visual Interactive Tool to Support the Allocation of Safety Stock in Supply Networks")
 
-st.markdown("This web application allows a user to interactively engage with selected elements of a widely used safety stock algorithm.  In allowing a user to experiment and play with the underlying assumptions of the algorithm it is expected that their own subjectivity can be leveraged to make better decisions.")
-st.markdown("The tool uses anonymised supply chain data for 2 drugs win a common API across three geographically distinct markets - also anonymised.  A diagram of the supply network is shown in Figure 1.")
-st.markdown("This tool was developed as a component of a Master's level research project at the University of Cambridge's Institute for Manufacturing (2021).")
+st.markdown("This web application allows a user to engage interactively with selected elements of a widely used safety stock algorithm.  In allowing a user to experiment and play with the underlying assumptions of the algorithm it is expected that their own subjectivity can be leveraged to make better decisions.")
+st.markdown("The tool uses anonymised supply chain data for 2 drugs with a common API across three geographically distinct markets - also anonymised.  A diagram of the supply network is shown in Figure 1.")
 
 #st.set_page_config(layout="wide")
 #Import Image
@@ -191,8 +190,8 @@ st.image(image, caption = 'Figure 1: Diagram of pharmaceutical supply network ex
 st.header("How to use this tool")
 st.markdown("This tool consists of two section:")
 st.markdown("1. Demand Variability\n2. Safety Stock Positioning")
-st.markdown("The Demand Variability section provides the weekly demand of each drug in each market for the previous 52 weeks.  The sliders may be used to set how they forecast the demand variability to change - the default values of the sliders represent the average demand and standard deviation of the previous year's data.")
-st.markdown("The final section allows the user to select which stages to store safety stock on.  The 'Calculate Inventory' button will then calculate the necessary service times, inventory levels, and inventory value.")
+st.markdown("The Demand Variability section provides 52 weeks of historical demand data of each drug in their respective markets.  The sliders may be used to set how the user forecasts the demand profile to change - the default values of the Mu and Sigma sliders represent the average demand and standard deviation of the previous year's data respectively.")
+st.markdown("The final section allows the user to select which stages to store safety stock on.  The 'Calculate Inventory' button, when pressed, will then calculate the necessary service times, inventory levels, and inventory value.")
 
 
 '''
@@ -548,7 +547,10 @@ if cols_last2[0].button("Calculate Inventory"):
     col_last[0].write(df)
     cols_last2[1].write("Inventory Value: " "£%.1fM" % inventory_cost)
 
-
+'''
+--------------------
+'''
+st.subheader("This tool was developed as a component of a Master's level research project at the University of Cambridge's Institute for Manufacturing (2021).")
 
 
 
