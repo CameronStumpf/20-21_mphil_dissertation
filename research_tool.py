@@ -211,7 +211,8 @@ st.text("")
 
 
 #load & clean data
-df_demand = pd.read_csv("demand_data.csv")
+#df_demand = pd.read_csv("demand_data.csv")
+df_demand = pd.read_csv("out.csv")
 df_demand = df_demand.interpolate(method='linear') #interpolate missing data
 df_demand[["Drug M, Market C", "Drug M, Market B", "Drug H, Market A"]] = df_demand[["Drug M, Market C", "Drug M, Market B", "Drug H, Market A"]].divide(1000000)
 
