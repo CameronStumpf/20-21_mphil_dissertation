@@ -419,6 +419,57 @@ col_last = st.beta_columns(1)  ##for the table
 cols_last2 = st.beta_columns(2)  ##for inventory value and calculate button
 
 
+
+D_stock_val = 0
+A_stock_val = 0
+B_stock_val = 0
+
+E_stock_val = 0
+G_stock_val = 0
+C_stock_val = 0
+F_stock_val = 0
+
+H_stock_val = 0
+I_stock_val = 0
+
+L_stock_val = 0
+K_stock_val = 0
+J_stock_val = 0
+
+#expander level 1
+with st.beta_expander("Stock Level 1"):
+    cols = st.beta_columns(2)
+    L_stock_val = cols[0].slider("L Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+    K_stock_val = cols[1].slider("K Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+    J_stock_val = cols[0].slider("J Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+
+
+#expander level 2
+with st.beta_expander("Stock Level 2"):
+    cols = st.beta_columns(2)
+    H_stock_val = cols[0].slider("H Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+    I_stock_val = cols[1].slider("I Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+
+
+
+#expander level 3
+with st.beta_expander("SStock Level 3"):
+    cols = st.beta_columns(2)
+    E_stock_val = cols[0].slider("E Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+    G_stock_val = cols[1].slider("G Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+    C_stock_val = cols[0].slider("C Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+    F_stock_val = cols[1].slider("F Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+
+#expander level 4
+with st.beta_expander("Stock Level 4"):
+    cols = st.beta_columns(2)
+    D_stock_val = cols[0].slider("D Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+    A_stock_val = cols[1].slider("A Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+    B_stock_val = cols[0].slider("B Stock Level", min_value=0.00, max_value=2.50, value=0, step=0.01)
+
+
+
+
 if cols_last2[0].button("Calculate Inventory"):
 
     #lead time / stock stored here? / cost added / mu / sigma / z
